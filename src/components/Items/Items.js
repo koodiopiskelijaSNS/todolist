@@ -13,7 +13,6 @@ let rows = props.data.map(invoice => {
  }
 );
 
-
     return (
       <Content>     
         {rows}  

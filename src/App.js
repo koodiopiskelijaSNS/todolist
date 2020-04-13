@@ -12,6 +12,7 @@ import Menu from './components/Menu/Menu';
 class App extends Component {
 
 constructor(props) {
+  
   super(props);
   this.state = {
     data: testdata
