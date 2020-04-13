@@ -3,19 +3,20 @@ import React from 'react';
 import Tehtavalista from '../Tehtavalista/Tehtavalista';
 import Content from '../Content/Content';
 
+
 function Items(props) {
+
+let rows = props.data.map(invoice => {
+  return (
+    <Tehtavalista data={invoice} />
+  );
+ }
+);
+
+
     return (
       <Content>     
-        <Tehtavalista />
-        <Tehtavalista />
-        <Tehtavalista />
-        <Tehtavalista />
-        <Tehtavalista />
-        <Tehtavalista />   
-        <Tehtavalista />
-        <Tehtavalista />   
-        <Tehtavalista />
-        <Tehtavalista />       
+        {rows}  
    </Content> 
     );
   }

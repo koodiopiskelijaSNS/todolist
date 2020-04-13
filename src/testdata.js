@@ -1,0 +1,32 @@
+const testdata = [
+ { id: "1",
+   tyyppi: 'Liikunta', 
+   paivat: 5,
+   takaraja: '2020-04-15',
+   kaudenalku: '2020-04-08',
+   kaudenloppu: '2020-04-15',
+   toteutunut: 5 },
+ { id: "2",
+   tyyppi: 'Hakemusten teko', 
+   paivat: 5,
+   takaraja: '2020-04-15',
+   kaudenalku: '2020-04-08',
+   kaudenloppu: '2020-04-15',
+   toteutunut: 2 },
+ { id: "3",
+   tyyppi: 'Siivous', 
+   paivat: 5,
+   takaraja: '2020-04-15',
+   kaudenalku: undefined,
+   kaudenloppu: undefined,
+   toteutunut: 1},
+ { id: "4",
+   tyyppi: 'Kirjasto', 
+   paivat: 5,
+   takaraja: '2020-04-15',
+   kaudenalku: '2020-04-08',
+   kaudenloppu: '2020-04-15',
+   toteutunut: 4 }
+];
+
+export default testdata;
