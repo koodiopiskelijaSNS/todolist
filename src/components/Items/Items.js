@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import Tehtavalista from '../Tehtavalista/Tehtavalista';
 import Content from '../Content/Content';
 
@@ -17,7 +19,7 @@ let rows = props.data.map(invoice => {
     return (
       <Content>     
         {rows} 
-        <FloatingButton secondary>+</FloatingButton> 
+        <Link to="/add"><FloatingButton secondary>+</FloatingButton></Link> 
    </Content> 
     );
   }

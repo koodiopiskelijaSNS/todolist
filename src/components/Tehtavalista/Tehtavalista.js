@@ -21,14 +21,14 @@ function Tehtavalista(props) {
       <div className="tehtavalista">
         <div className="tehtavalista__rivi">
           <div className="tehtavalista__tyyppi">{props.data.tyyppi}</div>
-          <div className="tehtavalista__paivat">Tavoite {props.data.paivat} krt.</div>
+          <div className="tehtavalista__paivat">Tavoite {props.data.paivat}</div>
         </div>
         <div className="tehtavalista__rivi">
           <div className="tehtavalista__takaraja">{takaraja.format("D.M.Y")}</div>
           <div className="tehtavalista__ajanjakso">{kausi}</div>
         </div>
           <div className="tehtavalista__rivi">
-          <div className="tehtavalista__tila">Toteutunut {props.data.toteutunut} krt.</div>
+          <div className="tehtavalista__tila">Toteutunut {props.data.toteutunut}</div>
           <div className="tehtavalista__prosentti">{prosentti ? prosentti.toFixed(0) + " % " : ""}</div>
         </div>
       </div>
