@@ -12,8 +12,7 @@ import AddItem from './components/AddItem/AddItem';
 
 class App extends Component {
 
-constructor(props) {
-  
+constructor(props) { 
   super(props);
   this.state = {
     data: testdata
