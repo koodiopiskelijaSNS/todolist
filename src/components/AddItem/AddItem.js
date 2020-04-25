@@ -13,7 +13,7 @@ function AddItem(props) {
 
         <h2>Lisää uusi tehtävä</h2>
 
-        <ItemForm onFormSubmit={props.onFormSubmit}/>
+        <ItemForm onFormSubmit={props.onFormSubmit} selectList={props.selectList} />
       
 
       </div>

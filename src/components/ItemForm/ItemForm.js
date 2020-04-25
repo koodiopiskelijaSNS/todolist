@@ -9,15 +9,16 @@ class ItemForm extends React.Component {
 
     constructor(props) {
         super(props);
+        const data = props.data ? props.data : {
+        tyyppi: "Hakemusten teko",
+        paivat: 0,
+        takaraja: "",
+        kaudenalku: "",
+        kaudenloppu: "",
+        toteutunut: ""
+    }
         this.state = {
-            data: {
-                tyyppi: "Hakemusten teko",
-                paivat: 0,
-                takaraja: "",
-                kaudenalku: "",
-                kaudenloppu: "",
-                toteutunut: ""
-            }
+            data: data           
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,7 +47,7 @@ class ItemForm extends React.Component {
           event.preventDefault();
           let data = Object.assign({}, this.state.data);
           data.toteutunut = parseFloat(data.toteutunut);
-          data.id = data.id ? data.id : uuidv4();
+          data.id = data.id ? data.id : data.id ? data.id : uuidv4();
           this.props.onFormSubmit(data);
           this.props.history.push("/");
 
@@ -62,10 +63,9 @@ class ItemForm extends React.Component {
             <div>
                 <label htmlFor="name">Tehtävätyyppi</label>
                 <select name="tyyppi" value={this.state.data.tyyppi} onChange={this.handleInputChange}>
-                    <option value="Hakemusten teko">Hakemusten teko</option>
-                    <option value="Kirjasto">Kirjasto</option>
-                    <option value="Liikunta">Liikunta</option>
-                    <option value="Siivous">Siivous</option>
+                
+        {this.props.selectList.map(item => <option value={item} key={item}>{item}</option>)}
+
                 </select>
             </div>
 
@@ -115,7 +115,7 @@ class ItemForm extends React.Component {
             <Button onClick={this.handleCancel}>PERUUTA</Button>
             </div>
             <div>
-            <Button type="submit" primary>LISÄÄ</Button>
+            <Button type="submit" primary>{this.state.data.id ? "TALLENNA" : "LISÄÄ"}</Button>
             </div>
         </div>
 

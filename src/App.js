@@ -9,20 +9,28 @@ import Stats from './components/Stats/Stats';
 import Settings from './components/Settings/Settings';
 import Menu from './components/Menu/Menu';
 import AddItem from './components/AddItem/AddItem';
+import EditItem from './components/EditItem/EditItem';
 
 class App extends Component {
 
 constructor(props) { 
   super(props);
   this.state = {
-    data: testdata
+    data: testdata,
+    selectList:["Hakemusten teko", "Kirjasto", "Liikunta", "Siivous", "Kauppa"]
   }
   this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  this.handleSelectListForm = this.handleSelectListForm.bind(this);
 }
 
 handleFormSubmit(newdata) {
   let storeddata = this.state.data.slice();
-  storeddata.push(newdata);
+  const index = storeddata.findIndex(item => item.id === newdata.id);
+  if (index >= 0) {
+    storeddata[index] = newdata;
+  } else {
+    storeddata.push(newdata);
+  }
   storeddata.sort((a,b) => { 
     const aDate = new Date(a.takaraja);
     const bDate = new Date(b.takaraja);
@@ -33,6 +41,15 @@ handleFormSubmit(newdata) {
   });
 }
 
+handleSelectListForm(newitem) {
+  let selectList = this.state.selectList.slice();
+  selectList.push(newitem);
+  selectList.sort();
+  this.setState({
+    selectList: selectList
+  });
+}
+
   render() {
     return (
       <Router>
@@ -40,8 +57,12 @@ handleFormSubmit(newdata) {
           <Header />
           <Route path="/" exact render={() => <Items data={this.state.data} />} />
           <Route path="/stats" component={Stats} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/add" render={() => <AddItem onFormSubmit={this.handleFormSubmit} />} />
+          <Route path="/settings" render={() => <Settings selectList={this.state.selectList} onFormSubmit={this.handleSelectListForm} /> } />
+          <Route path="/add" render={() => <AddItem onFormSubmit={this.handleFormSubmit} selectList={this.state.selectList} /> } />
+          <Route path="/edit/:id" render={(props) => <EditItem data={this.state.data} 
+                                                               selectList={this.state.selectList} 
+                                                               onFormSubmit={this.handleFormSubmit} 
+                                                               {...props} />} />
           <Menu />
        </div>
       </Router>
