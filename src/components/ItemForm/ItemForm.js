@@ -23,6 +23,7 @@ class ItemForm extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleDeleteItem = this.handleDeleteItem.bind(this);
     }
 
     handleInputChange(event) {
@@ -50,10 +51,15 @@ class ItemForm extends React.Component {
           data.id = data.id ? data.id : data.id ? data.id : uuidv4();
           this.props.onFormSubmit(data);
           this.props.history.push("/");
-
       }
 
-    render() {
+      handleDeleteItem(event) {
+          event.preventDefault();
+          this.props.onDeleteItem(this.state.data.id);
+          this.props.history.push("/");
+      }
+
+     render() {
         return(
             <form onSubmit={this.handleSubmit}>
 
@@ -112,12 +118,20 @@ class ItemForm extends React.Component {
 
         <div className="itemform__row">
             <div>
-            <Button onClick={this.handleCancel}>PERUUTA</Button>
+                <Button onClick={this.handleCancel}>PERUUTA</Button>
             </div>
             <div>
-            <Button type="submit" primary>{this.state.data.id ? "TALLENNA" : "LISÄÄ"}</Button>
+                <Button type="submit" primary>{this.state.data.id ? "TALLENNA" : "LISÄÄ"}</Button>
             </div>
         </div>
+
+        { this.props.onDeleteItem ?
+            <div className="itemform__row">
+            <div>
+            <Button onClick={this.handleDeleteItem}>POISTA</Button>
+            </div>
+            <div></div>
+            </div> : "" }
 
         </div>
 

@@ -17,7 +17,7 @@ let itemData = props.data[index];
 
         <h2>Tehtävän muokkaaminen</h2>
 
-        <ItemForm onFormSubmit={props.onFormSubmit} selectList={props.selectList} data={itemData} />
+        <ItemForm onFormSubmit={props.onFormSubmit} selectList={props.selectList} data={itemData} onDeleteItem={props.onDeleteItem} />
       
 
       </div>
