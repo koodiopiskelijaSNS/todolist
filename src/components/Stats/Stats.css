@@ -1,0 +1,19 @@
+.stats {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.stats__graph {
+    margin-top: 6em;
+    margin-bottom: 1em;
+}
+
+.stats h3 {
+    justify-content: center;
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
