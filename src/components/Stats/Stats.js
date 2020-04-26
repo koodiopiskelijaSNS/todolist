@@ -3,6 +3,7 @@ import React from 'react';
 import Content from '..//Content/Content';
 
 import { Doughnut } from 'react-chartjs-2';
+import stringHash from 'string-hash';
 
 import './Stats.css';
 
@@ -25,11 +26,7 @@ function Stats(props) {
     datasets: [
       {
       data: groupedData.map(item => item.toteutunut),
-      backgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56'
-        ]
+      backgroundColor: groupedData.map(item => "hsl(" + (stringHash(item.tyyppi) % 360) + ", 90%, 50%)"),
       }
     ]    
   }
