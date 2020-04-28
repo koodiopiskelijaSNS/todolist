@@ -3,7 +3,10 @@
 }
 
 .settings h3 {
-    margin-top: 0.5em;
+    justify-content: center;
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 
 .settings__items {

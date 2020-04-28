@@ -35,7 +35,7 @@ function Stats(props) {
       <Content>
         <div className="stats">
           <h2>Tehtävätilasto</h2>
-          <h3>Tehtävätyypit</h3>
+          <h3>Tehtäväloki</h3>
           <div className="stats__graph">
             <Doughnut data={doughnutData} />
         </div>
