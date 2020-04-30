@@ -1,4 +1,4 @@
-.settings {
+.settings {                 /*settings kohdan konffausta*/
     padding: 2em;
 }
 
@@ -23,7 +23,7 @@
     border-radius: 0.2em;
 }
 
-.settingsForm {
+.settingsForm {             
     display: flex;
     margin-top: 0.5em;
 }

@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component } from 'react';  /*react-komponentin importtaus eli tuonti*/                                   /*Huom! tehtävälista, menu, header ja content tehtiin ensin app.js:ään, */
+import { BrowserRouter as Router, Route } from 'react-router-dom';  /*sovelluksen reitityksen importtaus*/       /* ennen kuin ne siirrettiin omiinmoduuleihinsa eli components-kansioon*/
 import './App.css';
-import firebase, { provider, auth } from './firebase';
+import firebase, { provider, auth } from './firebase'; /*pilvipalvelun importtaus*/
 
-import Header from './components/Header/Header';
+/*eri komponenttien importtaus*/
+import Header from './components/Header/Header';  /*header on components-kansiossa eli määritellään components-kansio, jolloin määritellään header-kansio ja siellä oleva header-tiedosto*/
 import Items from './components/Items/Items';
 import Stats from './components/Stats/Stats';
 import Settings from './components/Settings/Settings';
@@ -14,8 +15,8 @@ import Content from './components/Content/Content';
 import Button from './components/buttons';
 
 class App extends Component {
-
-constructor(props) { 
+                                      /*state muuttujan määrittäminen */
+constructor(props) {                         
   super(props);
   this.state = {
     data: [],
@@ -23,7 +24,7 @@ constructor(props) {
     user: null,
     error: null
   }
-  this.dbRef = firebase.firestore(); 
+  this.dbRef = firebase.firestore();                                      /*tehdään bindaus eri kohteista*/
   this.handleFormSubmit = this.handleFormSubmit.bind(this);
   this.handleSelectListForm = this.handleSelectListForm.bind(this);
   this.handleDeleteItem = this.handleDeleteItem.bind(this);
@@ -58,11 +59,11 @@ componentDidMount() {
 
 }
   
-handleFormSubmit(newdata) {
+handleFormSubmit(newdata) {                       /*käsittelyfunktiolomake joka vyörytetäänpropsien kautta AddItem.js:n kautta ItemForm.js:lle jota hyödynnetään. Saa parametrin newdata. */
   this.refData.doc(newdata.id).set(newdata);
 }
 
-handleSelectListForm(newitem) {
+handleSelectListForm(newitem) {                     /*taulukon konffausta, liäsys ominaisuus, joka bindataan ylhäällä rivi 29*/
   let selectList = this.state.selectList.slice();
   selectList.push(newitem);
   selectList.sort();
@@ -119,6 +120,7 @@ logout() {
       );
     }
 
+    /*sovelluksen reitittäminen konffaus, napin linkitys AddItem-kohtaan sekä importtaus rivi 12 */
     return (
       <Router>
        <div className="App">

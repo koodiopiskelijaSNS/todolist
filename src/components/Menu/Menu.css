@@ -1,8 +1,9 @@
+/*menu valikon tyylin määritys*/
 .menu {
     background-color: #250A0A;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-evenly; /*asettaa kuvakkeet tasaisin välein*/
     max-height: 3em;
     min-height: 3em;
-    align-items: center;
+    align-items: center; /*keskittää tasaisesti kuvakkeet pituus- ja korkeussuunnassa*/
   }

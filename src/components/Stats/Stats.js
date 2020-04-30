@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Content from '..//Content/Content';
-
-import { Doughnut } from 'react-chartjs-2';
+import Content from '..//Content/Content';          /*Items.js puolelta contentin importtaus ja kaksi pistettä tarkoitta,*/
+import { Doughnut } from 'react-chartjs-2';        /*että haetaan kansiorunkoa ylempää tiedot */
 import stringHash from 'string-hash';
 
 import './Stats.css';
+
+/*statsin eli tilasto-ominaisuuden luonti joka saa propsit*/
 
 function Stats(props) {
 
@@ -30,7 +31,7 @@ function Stats(props) {
       }
     ]    
   }
-
+        /*tilaston/lokin muokkausta ja grafiikan konffausta */ 
     return (
       <Content>
         <div className="stats">

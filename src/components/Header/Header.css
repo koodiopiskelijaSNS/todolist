@@ -1,11 +1,11 @@
-.header {
+.header {                   
     background-color: #7B6161;
-    display: flex;
-    justify-content: center;
-    padding: 0.7em;
+    display: flex;               /*antaa väljyyttä otsikolle*/
+    justify-content: center;     /* keskittää otsikon */
+    padding: 0.7em;             /*täyte otsikon ympärille*/
     max-height: 3em;
     min-height: 5em;
-    color: #fff;
+    color: #fff;              /*otsikon tekstin väri*/
     align-items: center;
   }
   

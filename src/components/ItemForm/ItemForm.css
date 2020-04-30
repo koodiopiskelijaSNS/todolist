@@ -7,26 +7,26 @@
     display: flex;
 }
 
-.itemform__row > div {
-    display: flex;
+.itemform__row > div {                  /*div-määritteellä helpotetaan class-luokan kuormaa*/
+    display: flex;                         /*uuden kulun lisääminen kohta muokataan tässä kohtaa*/
     flex-direction: column;
     justify-content: center;
     margin: 0.5em 0.3em;
     flex: 1 1 auto;
 }
-
-.itemform input, .itemform select {
+                                                /*input type oletus koko on 20 merkkiä, sen voi käydäm uokkaamassa AddItem.js puolella input kohdassa*/
+.itemform input, .itemform select {             /*lomakkeen input-kentän (lisäys) muotoilu*/
     padding: 0.5em;
     border: 1px solid #999;
-    border-radius: 0.3em;
+    border-radius: 0.3em;                       /*kehysviivan muokkaus*/
     font-size: 1.2em;
     font-family: 'Merriweather', serif;
     box-sizing: border-box;
-    outline: none;
+    outline: none;                                  /*kehysviivan saa pois*/
     width: 100%;
 }
 
-.itemform input[type="date"]::-webkit-clear-button {
+.itemform input[type="date"]::-webkit-clear-button {            /*input date häivytys/muokkaus rivillä 29/33*/
     display: none;
 }
 
@@ -34,7 +34,7 @@
     display: none;
 }
 
-.itemform label {
+.itemform label {                               /*otsikon fonttikoon muokkaus*/
     font-size: 0.8em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.2em;                       /*alareunan väljyys eli ei ole ihan kiinni kehyksessä */
 }

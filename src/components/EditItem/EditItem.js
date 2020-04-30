@@ -4,7 +4,7 @@ import Content from '..//Content/Content';
 import ItemForm from '../ItemForm/ItemForm';
 
 import './EditItem.css';
-
+/*tehtävän muokkaamiskohdan konffausta sekä id-luonti itemille*/
 function EditItem(props) {
 
 const index = props.data.findIndex(item => item.id === props.match.params.id);

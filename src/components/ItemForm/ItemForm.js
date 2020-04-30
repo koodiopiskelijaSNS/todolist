@@ -1,14 +1,14 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import { v4 as uuidv4 } from 'uuid';
+import { withRouter } from 'react-router';      /*withRouterin importtaus joka täytyy viedä myös export defaultissa*/
+import { v4 as uuidv4 } from 'uuid';        /*tässä kohtaa tuli päivitetty versio uuidv4:een*/
 
-import Button from '../buttons';
+import Button from '../buttons';                /*Huom! rivillä 82 en osannut tehdä siten, että alkaisi ykkösestä, nykuisellään alkaa nollasta ja ei hyväksy ykköstä Tavoite kohdassa*/
 import './ItemForm.css';
 
 class ItemForm extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor(props) {                        /*state muuttujan alustaminen kohta, kuuluu kontrolloitu lomake osioon AddItem.js osiossa*/
+        super(props);   
         const data = props.data ? props.data : {
         tyyppi: "Hakemusten teko",
         paivat: 0,
@@ -20,13 +20,13 @@ class ItemForm extends React.Component {
         this.state = {
             data: data           
         };
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCancel = this.handleCancel.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);     /*lomakesyötteen bindaus tarkoittaa sitomista datalähteen kanssa toisiinsa*/ 
+        this.handleSubmit = this.handleSubmit.bind(this);                   /*handleInputChange liitetään myös value-kohtaan, katso alta myös rivi 37 value-arvo*/
+        this.handleCancel = this.handleCancel.bind(this);                   /*katso kohta rivi 42*/
         this.handleDeleteItem = this.handleDeleteItem.bind(this);
     }
 
-    handleInputChange(event) {
+    handleInputChange(event) {                              /*lomakesyötteen käsittely ja konffaus*/
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -39,27 +39,27 @@ class ItemForm extends React.Component {
         });
       }
 
-      handleCancel(event) {
+      handleCancel(event) {                              /*cancel-napin toiminnallisuuden konffaus*/               
           event.preventDefault();
-          this.props.history.goBack();
+          this.props.history.goBack();                  /*kohta 121 liittyy peruutus-napin historiaominaisuuteen*/
       }
 
-      handleSubmit(event) {
+      handleSubmit(event) {                              /*napin toiminnallisuuden konffaus*/
           event.preventDefault();
-          let data = Object.assign({}, this.state.data);
+          let data = Object.assign({}, this.state.data);    /*tiedon kopiointi*/ 
           data.toteutunut = parseFloat(data.toteutunut);
-          data.id = data.id ? data.id : data.id ? data.id : uuidv4();
-          this.props.onFormSubmit(data);
-          this.props.history.push("/");
+          data.id = data.id ? data.id : data.id ? data.id : uuidv4();   /*datan id-tunniste*/
+          this.props.onFormSubmit(data);                    /*tieto välitetään ylöspäin katso kohta AddItem rivi 9*/
+          this.props.history.push("/");                     /*historyn polun vienti etusivulle (plusnappi)*/
       }
 
-      handleDeleteItem(event) {
-          event.preventDefault();
+      handleDeleteItem(event) {                              /*delete-napin toiminnallisuuden konffaus, joka saa parametrina eventin eli tapahtuman*/
+          event.preventDefault();                                           /*Huom! tässä kohtaa tulostettiin console.log:iin ""lähetä lomake toiminto*/
           this.props.onDeleteItem(this.state.data.id);
           this.props.history.push("/");
       }
 
-     render() {
+     render() {                                 /*rivi 73 listan määrittely*/
         return(
             <form onSubmit={this.handleSubmit}>
 
@@ -70,18 +70,18 @@ class ItemForm extends React.Component {
                 <label htmlFor="name">Tehtävätyyppi</label>
                 <select name="tyyppi" value={this.state.data.tyyppi} onChange={this.handleInputChange}>
                 
-        {this.props.selectList.map(item => <option value={item} key={item}>{item}</option>)}
+        {this.props.selectList.map(item => <option value={item} key={item}>{item}</option>)}         
 
                 </select>
             </div>
-
-    <div className="itemform__row">
+                                                            
+    <div className="itemform__row">                        
             <div>
                 <label htmlFor="paivat">Tavoite</label>
                 <select name="paivat" value={this.state.data.paivat} onChange={this.handleInputChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
-                    <option value="3">3</option>
+                    <option value="3">3</option>               
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>

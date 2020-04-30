@@ -1,18 +1,21 @@
 import React from 'react';
 import Button from '../buttons';
 
-import Content from '../Content/Content';
+import Content from '../Content/Content';  /*Items.js puolelta contentin importtaus*/
 import './Settings.css';
 
+/*settings komponentin luonti ja reititys*/
 function Settings(props) {
 
-  const handleSubmit = function(event) {
+  const handleSubmit = function(event) {      /*lisää napin konffausta*/ 
     event.preventDefault();
     let tehtavatyyppi = event.target.elements.tehtavatyyppi.value;
     props.onFormSubmit(tehtavatyyppi);
     event.target.elements.tehtavatyyppi.value = "";
   }
 
+  /*profiili osion luominen settings osiossa sekä logout ja lisää buttonit ja niiden muokkaus,
+  sähköpostin photoURL*/
     return (
       <Content>
         <div className="settings">

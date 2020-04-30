@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 
 import './Tehtavalista.css';
 
+/*tehdään tehtävälistaan prosenttitoiminnallisuus rivi 21/22* ja se tulostetaan rivillä 41/
+/*moment ominaisuuden hyödyntäminen päivämäärän halutussa muodossa */
 function Tehtavalista(props) {
 
     let takaraja = moment(props.data.takaraja);
@@ -20,6 +22,9 @@ function Tehtavalista(props) {
       prosentti = props.data.toteutunut / paivat * 100;
     }
 
+    /*asetetaan tehtavalistan tehtävät div-elementin sisälle asetetaan myös päiväykset. 
+    Tässä kohtaa saadaan myös propsien kautta yksittäisen tyyppi, paivat jne. tiedot rivit 30-40 */
+    /* format-ominaisuudella muokataan päivämäärä halutun muotoiseksi. Rivillä 45 nuoli linkki*/
     return (
       <div className="tehtavalista">
           <div className="tehtavalista__ryhma">
@@ -37,7 +42,7 @@ function Tehtavalista(props) {
           </div>
         </div>
         <div className="tehtavalista__linkki">
-          <Link to={"/edit/" + props.data.id}><ArrowRight /></Link>
+          <Link to={"/edit/" + props.data.id}><ArrowRight /></Link>         
           </div>
         </div>    
     );

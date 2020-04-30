@@ -1,3 +1,4 @@
+/*tehtävälistan tyylin muokkausta*/
 .tehtavalista {
     border-bottom: 1px solid #C8B2B2;
     display: flex;
@@ -13,7 +14,7 @@
 }
 
 .tehtavalista__takaraja, .tehtavalista__ajanjakso, 
-.tehtavalista__tila, .tehtavalista__prosentti {
+.tehtavalista__tila, .tehtavalista__prosentti {   
     font-size: 85%;
     color: #666;
 }
