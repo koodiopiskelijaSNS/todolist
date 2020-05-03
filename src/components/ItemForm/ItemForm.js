@@ -44,13 +44,13 @@ class ItemForm extends React.Component {
           this.props.history.goBack();                  /*kohta 121 liittyy peruutus-napin historiaominaisuuteen*/
       }
 
-      handleSubmit(event) {                              /*napin toiminnallisuuden konffaus*/
+      handleSubmit(event) {                              /*plus eli lisäysnapin toiminnallisuuden konffaus*/
           event.preventDefault();
           let data = Object.assign({}, this.state.data);    /*tiedon kopiointi*/ 
           data.toteutunut = parseFloat(data.toteutunut);
           data.id = data.id ? data.id : data.id ? data.id : uuidv4();   /*datan id-tunniste*/
           this.props.onFormSubmit(data);                    /*tieto välitetään ylöspäin katso kohta AddItem rivi 9*/
-          this.props.history.push("/");                     /*historyn polun vienti etusivulle (plusnappi)*/
+          this.props.history.push("/");                     /*historypolun reititys etusivulle (plusnappi)*/
       }
 
       handleDeleteItem(event) {                              /*delete-napin toiminnallisuuden konffaus, joka saa parametrina eventin eli tapahtuman*/
@@ -59,7 +59,7 @@ class ItemForm extends React.Component {
           this.props.history.push("/");
       }
 
-     render() {                                 /*rivi 73 listan määrittely*/
+     render() {                                 /*rivi 73 listan määrittely, rivi 78 Tavoiteosion muokkaus seitsemälle päivälle*/
         return(
             <form onSubmit={this.handleSubmit}>
 
@@ -75,10 +75,11 @@ class ItemForm extends React.Component {
                 </select>
             </div>
                                                             
-    <div className="itemform__row">                        
+    <div className="itemform__row">                       
             <div>
                 <label htmlFor="paivat">Tavoite</label>
                 <select name="paivat" value={this.state.data.paivat} onChange={this.handleInputChange}>
+                    <option value="0">Lisää tavoite</option>       
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>               

@@ -15,7 +15,7 @@ import Content from './components/Content/Content';
 import Button from './components/buttons';
 
 class App extends Component {
-                                      /*state muuttujan määrittäminen */
+                                      /*state muuttujan määrittäminen*/
 constructor(props) {                         
   super(props);
   this.state = {
